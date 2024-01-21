@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>OneDrive-for-Unraid</Name>
+  <Repository>driveone/onedrive:latest</Repository>
+  <Registry>https://hub.docker.com/r/driveone/onedrive</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/abraunegg/onedrive/discussions</Support>
+  <Project>https://github.com/abraunegg/onedrive/blob/master/docs/Docker.md</Project>
+  <Overview>A free Microsoft OneDrive Client which supports OneDrive Personal, OneDrive for Business, OneDrive for Office365 and SharePoint.&#xD;
+&#xD;
+Installation:&#xD;
+- Install the Onedrive docker container using the template.&#xD;
+- Once installed, stop the docker container and find the container ID. (In the right upper corner of the docker page, switch over from &#x2018;Basic view&#x2019; to &#x2018;Advanced view&#x2019;. Now you can see the Container ID for your newly created container (for example 72409c107bd0). Copy this ID.)&#xD;
+- Open the Unraid terminal and type: docker start your_container_ID --interactive (use right mouse --&amp;gt; paste to paste your container ID in the terminal).&#xD;
+- After entering the command and pressing enter, the container starts in interactive mode and a link to a Microsoft login page is shown in the terminal. You can open this link by clicking on it and log in with the Microsoft credentials of the Onedrive account you want to add. If successful, a blank page is shown. Copy the full address of this page and past it (right mouse and paste) in the terminal as the response URL and press enter. If the link is accepted, the client immediately starts downloading your files.&#xD;
+- You can close the terminal, restart the container normally and everything should be working from now on.&#xD;
+- For every Onedrive account you want to sync with Unraid, you need to create a new docker container with a different folder for the configuration and data files.</Overview>
+  <Category>Cloud:</Category>
+  <WebUI/>
+  <TemplateURL>hhttps://github.com/addohm/unraid-app-templates/blob/main/onedrive/onedrive.xml</TemplateURL>
+  <Icon>https://user-images.githubusercontent.com/29630035/64020891-0342f080-cb33-11e9-8a86-7a4baffcdf6d.png</Icon>
+  <ExtraParams>-it</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled></DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Configuration" Target="/onedrive/conf" Default="" Mode="rw" Description="Location of the container configuration folder." Type="Path" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Data" Target="/onedrive/data" Default="" Mode="rw" Description="Location of the container data folder, where your onedrive files are stored. " Type="Path" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="UID" Target="ONEDRIVE_UID" Default="1000" Mode="" Description="Open a terminal to your Unraid server.  Type `id <username>` where username is the user this container is intended for and note the user and group id." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="GID" Target="ONEDRIVE_GID" Default="100" Mode="" Description="Open a terminal to your Unraid server.  Type `id <username>` where username is the user this container is intended for and note the user and group id." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Verbosity" Target="ONEDRIVE_VERBOSE" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+  <Config Name="Debug" Target="ONEDRIVE_DEBUG" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+  <Config Name="Debug HTTPS" Target="ONEDRIVE_DEBUG_HTTPS" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+  <Config Name="Resync" Target="ONEDRIVE_RESYNC" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+  <Config Name="Download Only" Target="ONEDRIVE_DOWNLOADONLY" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+  <Config Name="Upload Only" Target="ONEDRIVE_UPLOADONLY" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+  <Config Name="No Remote Deletions" Target="ONEDRIVE_NOREMOTEDELETE" Default="0" Mode="" Description="Controls " Type="Variable" Display="always" Required="false" Mask="false">0</Config>
+</Container>
